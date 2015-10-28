@@ -1,4 +1,4 @@
-# hubot-codenames
+# hubot-codenames [![Build Status](https://travis-ci.org/mudge/hubot-codenames.svg?branch=master)](https://travis-ci.org/mudge/hubot-codenames)
 
 Suggesting solid gold, business appropriate names since 2013 thanks to Clive
 Murray's excellent [Project Namer](http://codenames.clivemurray.com/).
