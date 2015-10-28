@@ -9,7 +9,7 @@ See [`src/codenames.coffee`](src/codenames.coffee) for full documentation.
 
 In hubot project repo, run:
 
-`npm install mudge/hubot-codenames --save`
+`npm install hubot-codenames --save`
 
 Then add **hubot-codenames** to your `external-scripts.json`:
 
