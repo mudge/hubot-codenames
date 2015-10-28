@@ -1,18 +1,29 @@
-chai = require 'chai'
-sinon = require 'sinon'
-chai.use require 'sinon-chai'
+Helper = require('hubot-test-helper')
+nock = require('nock')
+expect = require('chai').expect
 
-expect = chai.expect
+helper = new Helper('../src/codenames.coffee')
 
 describe 'codenames', ->
   beforeEach ->
-    @robot =
-      respond: sinon.spy()
-      http: ->
-        get: ->
-          ->
+    nock('http://codenames.clivemurray.com')
+      .get('/data/prefixes.json')
+      .reply(200, [{title: 'black', attributes: ['colour']}])
+      .get('/data/animals.json')
+      .reply(200, [{title: 'bat', attributes: ['air', 'mammal']}])
+    @room = helper.createRoom(http: false)
 
-    require('../src/codenames')(@robot)
+  afterEach ->
+    @room.destroy()
+    nock.cleanAll()
 
-  it 'registers a respond listener', ->
-    expect(@robot.respond).to.have.been.calledWith(/suggest a( project)? name/i)
+  context 'user asks for a suggestion', ->
+    beforeEach (done) ->
+      @room.user.say 'alice', 'hubot suggest a name'
+      setTimeout done, 100
+
+    it 'responds to suggestions', ->
+      expect(@room.messages).to.eql [
+        ['alice', 'hubot suggest a name'],
+        ['hubot', '@alice How about BlackBat?'],
+      ]
