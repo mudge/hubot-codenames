@@ -11,10 +11,9 @@ describe 'codenames', ->
       .reply(200, [{title: 'black', attributes: ['colour']}])
       .get('/data/animals.json')
       .reply(200, [{title: 'bat', attributes: ['air', 'mammal']}])
-    @room = helper.createRoom(http: false)
+    @room = helper.createRoom(httpd: false)
 
   afterEach ->
-    @room.destroy()
     nock.cleanAll()
 
   context 'user asks for a suggestion', ->
