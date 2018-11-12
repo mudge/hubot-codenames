@@ -1,7 +1,7 @@
 {
   "name": "hubot-codenames",
   "description": "Suggesting solid gold, business appropriate names since 2013. Using Clive Murray's excellent http://codenames.clivemurray.com/",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Paul Mucur <mudge@mudge.name>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts",

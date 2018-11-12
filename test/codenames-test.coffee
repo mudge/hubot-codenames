@@ -6,7 +6,7 @@ helper = new Helper('../src/codenames.coffee')
 
 describe 'codenames', ->
   beforeEach ->
-    nock('http://codenames.clivemurray.com')
+    nock('https://codenames.clivemurray.com')
       .get('/data/prefixes.json')
       .reply(200, [{title: 'black', attributes: ['colour']}])
       .get('/data/animals.json')
